@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:splunk="http://www.mulesoft.org/schema/mule/splunk"  xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tcp="http://www.mulesoft.org/schema/mule/tcp" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/splunk http://www.mulesoft.org/schema/mule/splunk/current/mule-splunk.xsd">
+    <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8081"/>
+    
+    <http:request-config doc:name="HTTP Request Configuration" host="maps.googleapis.com" name="HTTP_Request_Configuration" port="443" protocol="HTTPS">
+    </http:request-config>
+    <splunk:config-type name="Splunk__Configuration" username="roajer" password="roajer@KAR" host="CORP-L-6411FMH" port="8000" doc:name="Splunk: Configuration"/>
+    
+	<flow name="rest-api-proxy">
+		<http:listener config-ref="HTTP_Listener_Configuration" doc:name="Receive HTTP requests from apps" path="/googlemap"/>
+		<http:request config-ref="HTTP_Request_Configuration" doc:name="Send requests to API" method="GET" parseResponse="false" path="/maps/api/geocode/json">
+			<http:request-builder>
+                <http:query-param paramName="latlng" value="40.714224,-73.961452"/>
+                <http:query-param paramName="key" value="AIzaSyBvMMjZTX6qImp9EHfoP57pnYuJwfJnExI"/>
+			</http:request-builder>
+		</http:request>
+        <response>
+            <logger level="INFO" doc:name="Logger"/>
+        </response>
+	</flow>
+</mule>

@@ -1,0 +1,4 @@
+authenticated.users=[{"token"\:"e93bf46d-4f62-4eb0-8719-e107efa4239d","userId"\:"roajergilbert","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/"}]
+current.token=e93bf46d-4f62-4eb0-8719-e107efa4239d
+current.user=roajergilbert
+eclipse.preferences.version=1

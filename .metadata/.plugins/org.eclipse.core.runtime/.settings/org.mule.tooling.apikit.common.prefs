@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+googlemapsapi/api_version={"apiId"\:"13348151","apiName"\:"google_map_api","versionName"\:"1","versionId"\:"183389","deprecated"\:false,"organizationId"\:"cbd1d228-27f5-4458-a608-77b21b4a8318","exportUrl"\:"https\://anypoint.mulesoft.com//apiplatform/repository/v2/organizations/cbd1d228-27f5-4458-a608-77b21b4a8318/apis/13348151/versions/183389/files/export","rootFileId"\:"1510264"}
+googlemapsapi/users=[{"token"\:"e93bf46d-4f62-4eb0-8719-e107efa4239d","userId"\:"roajergilbert","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/"}]
